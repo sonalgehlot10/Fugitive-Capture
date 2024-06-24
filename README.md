@@ -36,22 +36,6 @@ EV SUV: 120 KM (1 available)
 2. Install dependencies: `yarn install`.
 3. Start the development server: `export NODE_OPTIONS=--openssl-legacy-provider && yarn start`.
 
-## Deployment Instructions
-
-### Frontend
-1. Build the React app: `npm run build`.
-2. Deploy on Netlify by creating a new site and dragging the `build` folder.
-
-### Backend
-1. Deploy on Heroku:
-    ```bash
-    git init
-    heroku create your-app-name
-    git add .
-    git commit -m "Initial commit"
-    git push heroku master
-    ```
-
 ## Assumptions
 - Each city can only be selected by one cop.
 - Vehicles must have enough range for a round trip.
