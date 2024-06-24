@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# Fugitive Capture
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
+Fugitive Capture is a web application where three cops select cities and vehicles to capture a fugitive hiding in one of five neighboring cities. The app uses React for the frontend and Node.js for the backend.
 
-## Available Scripts
+## Technologies Used
+- Frontend: React
+- Backend: Node.js, Express
+- Deployment: Netlify (frontend)
+- HTTP Client: Axios
 
-In the project directory, you can run:
+## Gameplay
+City Selection
+Each cop independently chooses one city to investigate from the following list:
+Yapkashnagar (60 KM)
+Lihaspur (50 KM)
+Narmis City (40 KM)
+Shekharvati (30 KM)
+Nuravgram (20 KM)
 
-### `npm start`
+Vehicle Selection
+Based on the chosen city's distance, each cop selects an electric vehicle considering its range and availability:
+EV Bike: 60 KM (2 available)
+EV Car: 100 KM (1 available)
+EV SUV: 120 KM (1 available)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Setup Instructions
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Backend
+1. Navigate to the `backend` directory.
+2. Install dependencies: `yarn install`.
+3. Start the server: `node server.js`.
 
-### `npm test`
+### Frontend
+1. Navigate to the `fugitive-capture` directory.
+2. Install dependencies: `yarn install`.
+3. Start the development server: `export NODE_OPTIONS=--openssl-legacy-provider && yarn start`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Deployment Instructions
 
-### `npm run build`
+### Frontend
+1. Build the React app: `npm run build`.
+2. Deploy on Netlify by creating a new site and dragging the `build` folder.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Backend
+1. Deploy on Heroku:
+    ```bash
+    git init
+    heroku create your-app-name
+    git add .
+    git commit -m "Initial commit"
+    git push heroku master
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Assumptions
+- Each city can only be selected by one cop.
+- Vehicles must have enough range for a round trip.
+- The backend simulates the fugitive's location randomly.
+- No database is used; all data is stored in-memory.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Result
+The system determines if any cop successfully found the fugitive. If found, it displays the name of the cop who made the successful capture.
