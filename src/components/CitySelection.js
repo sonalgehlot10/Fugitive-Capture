@@ -43,11 +43,16 @@
 
 
 //----------------------------------
-import React, { useEffect, useState } from 'react';
+// src/components/CitySelection.js
+
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getCities } from '../api';
 
 const CitySelection = () => {
     const [cities, setCities] = useState([]);
+    const [selectedCity, setSelectedCity] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         getCities()
@@ -55,14 +60,25 @@ const CitySelection = () => {
             .catch(error => console.error('Error fetching cities:', error));
     }, []);
 
+    const handleNext = () => {
+        if (selectedCity) {
+            navigate(`/vehicle-selection?city=${selectedCity}`);
+        } else {
+            alert('Please select a city');
+        }
+    };
+
     return (
-        <div className="container">
-            <h2>Select a City</h2>
-            <ul>
+        <div>
+            <h1>Select a City</h1>
+            <select value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)}>
+                <option value="">Select a city</option>
                 {cities.map(city => (
-                    <li key={city.name}>{city.name} - {city.distance} KM</li>
+                    <option key={city.name} value={city.name}>{city.name}</option>
                 ))}
-            </ul>
+            </select>
+            <br />
+            <button onClick={handleNext}>Next</button>
         </div>
     );
 };
