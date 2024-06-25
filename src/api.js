@@ -1,9 +1,14 @@
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
 
 export const getCities = async () => {
-  const response = await fetch(`${API_URL}/api/cities`);
-  const data = await response.json();
-  return data;
+    try {
+        const response = await fetch(`${API_URL}/api/cities`);
+        const data = await response.json();
+        console.log('Cities data:', data);
+        return data;
+    } catch (error) {
+        console.error('Error fetching cities:', error);
+    }
 };
 
 export const getVehicles = async () => {
