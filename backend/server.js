@@ -3,13 +3,10 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
-// app.use(cors());
-app.use(cors({
-    origin: 'https://fugitivecaptureproj.netlify.app',
-}));
+app.use(cors());
 app.use(bodyParser.json());
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 const cities = [
     { name: 'Yapkashnagar', distance: 60 },
@@ -49,7 +46,7 @@ app.post('/api/cops', (req, res) => {
     selectedCities.add(city);
     cops.push({ cop, city, vehicle });
     console.log(`New cop added: ${cop}, City: ${city}, Vehicle: ${vehicle}`);
-    res.json({ message: 'Selection saved' });
+    res.json({ message: 'Selection saved', data: { cop, city, vehicle } });
 });
 
 app.get('/api/result', (req, res) => {
@@ -76,14 +73,6 @@ app.get('/api/result', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
-
-
-
-
-
-
-
-
 
 
 
