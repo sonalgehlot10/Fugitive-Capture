@@ -11,14 +11,14 @@ const VehicleSelection = () => {
     const city = new URLSearchParams(location.search).get('city');
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/api/vehicles`)
+        axios.get(`https://fugitive-capture-backend-3vu5.onrender.com/api/vehicles`)
             .then(response => setVehicles(response.data))
             .catch(error => console.error('Error fetching vehicles:', error));
     }, []);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post(`http://localhost:3001/api/cops`, { cop: copName, city, vehicle: selectedVehicle })
+        axios.post(`https://fugitive-capture-backend-3vu5.onrender.com/api/cops`, { cop: copName, city, vehicle: selectedVehicle })
             .then(response => {
                 console.log('Response:', response.data);
                 navigate('/result');

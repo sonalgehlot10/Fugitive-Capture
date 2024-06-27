@@ -5,7 +5,7 @@ const Result = () => {
     const [result, setResult] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/api/result`)
+        axios.get(`https://fugitive-capture-backend-3vu5.onrender.com/api/result`)
             .then(response => {
                 console.log(response.data);
                 setResult(response.data);

@@ -8,7 +8,7 @@ const CitySelection = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/api/cities`)
+        axios.get(`https://fugitive-capture-backend-3vu5.onrender.com/api/cities`)
             .then(response => setCities(response.data))
             .catch(error => console.error('Error fetching cities:', error));
     }, []);
